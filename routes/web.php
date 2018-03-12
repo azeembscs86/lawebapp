@@ -19,6 +19,23 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', 'Admin\AdminController@index'); //----------------admin dashboard
 
 Route::prefix('admin')->group(function(){    
+    
+    Route::get('/categories','Admin\Categories\CategoriesController@index');  //-------------------get categories
+    
+    Route::post('/categories/save-categories','Admin\Categories\CategoriesController@addCategory');    //-------------------add new category
+    
+    Route::post('/categories/update-category','Admin\Categories\CategoriesController@updateCategory');  //------------------update category
+     
+    Route::get('/categories/destroy/{slug}','Admin\Categories\CategoriesController@destroy');
+    
+    Route::get('/brands','Admin\Brands\BrandsController@index');              //-------------------get Brands
+    
+    Route::post('/brands/save-brand','Admin\Brands\BrandsController@addBrand'); //----------------add new brand
+    
+    Route::post('/brands/update-brand','Admin\Brands\BrandsController@updateBrand'); //----------------update brand
+    
+    Route::get('/products','Admin\Products\ProductsController@index');      //--------------------get Products
+    
     Route::get('/login', 'Auth\AuthorController@showLoginForm')->name('admin.login'); //---------admin login form
     
     Route::post('/login', 'Auth\AuthorController@login')->name('admin.login.submit'); //---------admin login form post   
